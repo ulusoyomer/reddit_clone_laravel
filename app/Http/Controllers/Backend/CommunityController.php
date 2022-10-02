@@ -13,11 +13,12 @@ class CommunityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function index()
     {
-        return 'ok';
+        $communities = Community::all();
+        return Inertia::render('Communities/Index', compact('communities'));
     }
 
     /**
