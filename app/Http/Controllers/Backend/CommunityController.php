@@ -5,17 +5,19 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommunityStoreRequest;
 use App\Models\Community;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class CommunityController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $communities = Community::all();
         return Inertia::render('Communities/Index', compact('communities'));
@@ -24,9 +26,9 @@ class CommunityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         return Inertia::render('Communities/Create');
     }
@@ -34,9 +36,10 @@ class CommunityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @param CommunityStoreRequest $request
+     * @return RedirectResponse
      */
-    public function store(CommunityStoreRequest $request)
+    public function store(CommunityStoreRequest $request): RedirectResponse
     {
         Community::create($request->validated() + ['user_id' => auth()->id()]);
 
@@ -57,24 +60,26 @@ class CommunityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Community $community
+     * @return Response
      */
-    public function edit($id)
+    public function edit(Community $community): Response
     {
-        //
+        return  Inertia::render('Communities/Edit',compact('community'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param CommunityStoreRequest $request
+     * @param Community $community
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(CommunityStoreRequest $request, Community $community): RedirectResponse
     {
-        //
+        $community->update($request->validated());
+
+        return to_route('communities.index');
     }
 
     /**

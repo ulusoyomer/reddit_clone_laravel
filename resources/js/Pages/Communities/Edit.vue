@@ -29,7 +29,7 @@
                         <div class="flex items-center justify-end mt-4">
                             <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }"
                                            :disabled="form.processing">
-                                Store
+                                Updategit
                             </PrimaryButton>
                         </div>
                     </form>
@@ -47,14 +47,14 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import {Head, useForm} from '@inertiajs/inertia-vue3';
 
-const form = useForm({
-    name: '',
-    description: '',
-    slug:''
-});
+const props = defineProps({
+    community:Object
+})
+
+const form = useForm(props.community);
 
 const submit = () => {
-    form.post(route('communities.store'));
+    form.put(route('communities.update',props.community.id));
 };
 </script>
 
