@@ -29,7 +29,7 @@
                         <div class="flex items-center justify-end mt-4">
                             <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }"
                                            :disabled="form.processing">
-                                Updategit
+                                Update
                             </PrimaryButton>
                         </div>
                     </form>
