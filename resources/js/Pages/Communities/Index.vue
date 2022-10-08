@@ -42,7 +42,7 @@
                                         </thead>
                                         <tbody class="divide-y divide-gray-200 bg-white">
                                         <tr
-                                            v-for="community in communities"
+                                            v-for="community in communities.data"
                                             :key="community.id">
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 {{ community.name }}
@@ -65,6 +65,9 @@
                                         <!-- More people... -->
                                         </tbody>
                                     </table>
+                                    <div class="m-2 p-2">
+                                        <Pagination :links="communities.links" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -78,6 +81,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import {Head, Link} from '@inertiajs/inertia-vue3';
+import Pagination from '../../Components/Pagination.vue';
 
 defineProps({
     communities: Object
