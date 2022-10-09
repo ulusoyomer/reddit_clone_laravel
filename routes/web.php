@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use \App\Http\Controllers\Backend\CommunityController;
+use \App\Http\Controllers\Frontend\SubredditController;
 
 
 Route::get('/', function () {
@@ -15,12 +16,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/r/{slug}',[SubredditController::class,'show'])->name('subreddit.show');
+
 Route::group(['middleware'=>['auth', 'verified']],function (){
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::resource('/communities',CommunityController::class);
+    Route::resource('/dashboard/communities',CommunityController::class);
 });
 
 require __DIR__.'/auth.php';
