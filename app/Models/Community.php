@@ -26,4 +26,15 @@ class Community extends Model
             ]
         ];
     }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
 }

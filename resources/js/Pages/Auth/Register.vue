@@ -27,7 +27,7 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" class="max-w-md mx-auto bg-white shadow rounded-md p-6">
             <div>
                 <InputLabel for="name" value="Name" />
                 <TextInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" autofocus autocomplete="name" />
