@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use \App\Http\Controllers\Backend\CommunityController;
 use \App\Http\Controllers\Frontend\CommunityController as FrontendCommunityController;
 use \App\Http\Controllers\Backend\CommunityPostController;
+use \App\Http\Controllers\Frontend\PostController as FrontendPostController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -17,6 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/r/{slug}',[FrontendCommunityController::class,'show'])->name('frontend.communities.show');
+
+Route::get('/r/{community_slug}/posts/{post:slug}',[FrontendPostController::class,'show'])
+    ->name('frontend.communities.post.show');
 
 Route::group(['middleware'=>['auth', 'verified']],function (){
     Route::get('/dashboard', function () {

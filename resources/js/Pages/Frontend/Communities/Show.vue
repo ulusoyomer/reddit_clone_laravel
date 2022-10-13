@@ -19,7 +19,7 @@
                            v-for="post in posts.data"
                            :post="post"
                            :key="post.id"
-                           :community="community.name"
+                           :community="community.slug"
                 />
                 <div class="mt-4 p-2">
                     <Pagination :links="posts.meta.links" />

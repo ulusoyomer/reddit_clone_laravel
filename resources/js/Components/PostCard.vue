@@ -16,18 +16,19 @@
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{post.description}}</p>
             <div class="flex m-2 p-2">
                 <p class="mr-4 p-2">Comments (2)</p>
-                <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-indigo-700 rounded-md">
+                <Link :href="route('frontend.communities.post.show',[community,post.slug])" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-indigo-700 rounded-md">
                     Read more
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short ml-2 -mr-1 w-4 h-4" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
                     </svg>
-                </a>
+                </Link>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import {Link} from "@inertiajs/inertia-vue3";
     defineProps({
         post: Object,
         community:Object,
