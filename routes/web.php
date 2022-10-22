@@ -17,18 +17,14 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/r/{slug}',[FrontendCommunityController::class,'show'])->name('frontend.communities.show');
+Route::get('/r/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
 
-Route::get('/r/{community_slug}/posts/{post:slug}',[FrontendPostController::class,'show'])
+Route::get('/r/{community_slug}/posts/{post:slug}', [FrontendPostController::class, 'show'])
     ->name('frontend.communities.post.show');
 
-Route::group(['middleware'=>['auth', 'verified']],function (){
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-
-    Route::resource('/dashboard/communities',CommunityController::class);
-    Route::resource('/dashboard/communities.posts',CommunityPostController::class);
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::resource('/communities', CommunityController::class);
+    Route::resource('/communities.posts', CommunityPostController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
