@@ -31,6 +31,6 @@
 import {Link} from "@inertiajs/inertia-vue3";
     defineProps({
         post: Object,
-        community:Object,
+        community:String,
     });
 </script>
