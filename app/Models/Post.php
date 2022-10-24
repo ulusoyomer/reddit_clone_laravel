@@ -36,4 +36,16 @@ class Post extends Model
     {
         return 'slug';
     }
+
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function community(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Community::class);
+    }
+
+
 }

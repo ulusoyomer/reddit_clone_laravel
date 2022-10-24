@@ -60,13 +60,14 @@ const form = useForm({
     url: props.post?.url
 });
 
+const submit = () => {
+    form.put(route('communities.posts.update', [props.community.slug, props.post.slug]));
+}
+
 const props = defineProps({
     community: Object,
     post: Object
 });
 
-const submit = () => {
-    form.put(route('communities.posts.update', [props.community.slug, props.post.slug]));
-};
 </script>
 
