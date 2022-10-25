@@ -1,6 +1,8 @@
 <template>
-    <div class="mt-2 p-6 max-w-4xl bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <div class="mr-3">upvote</div>
+    <div class="mt-2 p-6 max-w-4xl flex rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="mr-3">
+            <PostVote :post="post.slug" />
+        </div>
         <div>
             <div class="flex m-2 p-2">
                 <span class="font-semibold mr-3">r/{{community}}</span>
@@ -9,11 +11,11 @@
                 </div>
             </div>
             <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 ml-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {{post.title}}
                 </h5>
             </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{post.description}}</p>
+            <p class="mb-3 ml-6 font-normal text-gray-700 dark:text-gray-400">{{post.description}}</p>
             <div class="flex m-2 p-2">
                 <p class="mr-4 p-2">Comments (2)</p>
                 <Link :href="route('frontend.communities.post.show',[community,post.slug])" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-indigo-700 rounded-md">
@@ -29,6 +31,7 @@
 
 <script setup>
 import {Link} from "@inertiajs/inertia-vue3";
+import PostVote from "@/Components/PostVote.vue";
     defineProps({
         post: Object,
         community:String,

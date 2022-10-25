@@ -16,7 +16,8 @@ class Post extends Model
         'title',
         'slug',
         'url',
-        'description'
+        'description',
+        'votes'
     ];
 
     public function sluggable(): array
