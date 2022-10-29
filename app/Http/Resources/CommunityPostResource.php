@@ -20,7 +20,9 @@ class CommunityPostResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'username' => $this->user->user_name,
-            'slug' => $this->slug
+            'slug' => $this->slug,
+            'votes' => $this->votes,
+            'postVotes' => $this->whenLoaded('postVotes')
         ];
     }
 }

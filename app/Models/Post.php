@@ -48,5 +48,10 @@ class Post extends Model
         return $this->belongsTo(Community::class);
     }
 
+    public function postVotes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PostVote::class);
+    }
+
 
 }

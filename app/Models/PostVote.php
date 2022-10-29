@@ -14,4 +14,9 @@ class PostVote extends Model
         'post_id',
         'vote'
     ];
+
+    public function post(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Post::class);
+    }
 }
