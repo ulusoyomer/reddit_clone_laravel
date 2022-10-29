@@ -15,7 +15,7 @@
         </template>
         <section class="flex md:flex-row m-2 p-2">
             <div class="w-8/12">
-                <post-card class="m-1"
+                <post-card class="mr-3"
                            v-for="post in posts.data"
                            :post="post"
                            :key="post.id"
@@ -26,9 +26,19 @@
                 </div>
             </div>
             <div class="w-4/12">
-                <div class="m-2 p-2 bg-slate-500 text-white">
-                    <h2>Latest Communities</h2>
+                <div>
+                    <h2 class="font-semibold text-lg p-6 bg-indigo-700 rounded-t-lg text-white">
+                        About {{community.name}}
+                    </h2>
+                    <p class="bg-white p-4 rounded-b-lg">
+                        {{community.description}}
+                    </p>
                 </div>
+                <CommunityList class="mt-4" :communities="communities.data">
+                    <template #title>
+                        Latest Communities
+                    </template>
+                </CommunityList>
             </div>
         </section>
     </guest-layout>
@@ -39,10 +49,12 @@ import GuestLayout from "@/Layouts/GuestLayout.vue";
 import {Link} from "@inertiajs/inertia-vue3";
 import PostCard from "@/Components/PostCard.vue";
 import Pagination from "@/Components/Pagination.vue";
+import CommunityList from "@/Components/CommunityList.vue";
 
 defineProps({
     community: Object,
     posts: Object,
+    communities:Object
 })
 </script>
 
